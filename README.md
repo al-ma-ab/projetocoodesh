@@ -166,7 +166,7 @@ INSERT INTO order_items (order_id, product_id, quantity, list_price, discount) V
 
 
 
-# consultas que foram pedidas
+#### Inserindo os dados
 
 
 # Listar todos Clientes que não tenham realizado uma compra;
@@ -176,21 +176,21 @@ LEFT JOIN orders o ON c.customer_id = o.customer_id
 WHERE o.order_id IS NULL;
 
 
-#Listar os Produtos que não tenham sido comprados
+# Listar os Produtos que não tenham sido comprados
 SELECT p.product_id, p.product_name, p.brand_id, p.category_id, p.model_year, p.list_price
 FROM products p
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
 WHERE oi.order_id IS NULL;
 
 
-#Listar os Produtos sem Estoque;
+# Listar os Produtos sem Estoque;
 SELECT p.product_id, p.product_name, p.brand_id, p.category_id, p.model_year, p.list_price, s.quantity
 FROM products p
 JOIN stocks s ON p.product_id = s.product_id
 WHERE s.quantity > 0;
 
 
-#Agrupar a quantidade de vendas que uma determinada Marca por Loja
+# Agrupar a quantidade de vendas que uma determinada Marca por Loja
 SELECT
     s.store_id,
     s.store_name,
@@ -214,7 +214,7 @@ ORDER BY
 
 
 
-#Listar os Funcionarios que não estejam relacionados a um Pedido.
+# Listar os Funcionarios que não estejam relacionados a um Pedido.
 SELECT s.staff_id, s.first_name, s.last_name, s.phone, s.email
 FROM staffs s
 LEFT JOIN orders o ON s.staff_id = o.staff_id
